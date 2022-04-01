@@ -25,7 +25,7 @@
 				font-weight: 100;
 				top: 0;
 				font-size: rem-calc(60);
-				color: rgba(255, 255, 255, 0.1);
+				color: rgba(51, 50, 50, 0.589);
 			}
 
 			h1,
@@ -41,9 +41,9 @@
 
 			img {
 				position: absolute;
-				top: rem-calc(-90);
+				top: rem-calc(-150);
 				left: rem-calc(30);
-				max-width: rem-calc(130);
+				max-width: rem-calc(180);
 				z-index: 10;
 
 				//Remove Bug Animation
@@ -106,7 +106,7 @@
 					position: absolute;
 					top: rem-calc(-80);
 					left: rem-calc(0);
-					max-width: rem-calc(100);
+					max-width: rem-calc(140);
 					z-index: 10;
 				}
 
