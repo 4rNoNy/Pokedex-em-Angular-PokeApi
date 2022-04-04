@@ -1,5 +1,5 @@
 <poke-header></poke-header>
 
 <main>
-  <poke-list></poke-list>
+  <pokecards *ngFor="let pokemon of pokemonsPaginated" [pokemon]="pokemon"></pokecards>
 </main>
