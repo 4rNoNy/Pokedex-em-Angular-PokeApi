@@ -6,11 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 
 //Modules
-import { PagesModule } from './pages/pages.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -34,12 +35,12 @@ const dbConfig: DBConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PagesModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,

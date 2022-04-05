@@ -16,6 +16,11 @@ section {
 }
 
 .responsive-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  padding: rem-calc(20) 0;
   margin-bottom: 20px;
 }
 

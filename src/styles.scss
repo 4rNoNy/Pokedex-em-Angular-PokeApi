@@ -3,18 +3,28 @@
 @import './Config-scss/reset.scss';
 @import './Config-scss/btn.scss';
 @import './Config-scss/animation.scss';
+@import './assets/css/variables.scss';
 
 
 
-html{
+
+html {
   font-family: 'Roboto', sans-serif;
   background: var(--primary-color);
 }
 
-main{
+main {
   width: rem-calc(600);
   margin: 0 auto;
   box-sizing: border-box;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 
+/**
+ * Componente raiz da aplicação. Esse componente em si não faz nada demais (além do basico)
+ */
 @Component({
   selector: 'app-root',
-  template: `<router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'pokedex-angular-typescript';
+
 }

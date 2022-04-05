@@ -14,6 +14,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  //poke-search
+  private setAllPokemons: any;
+  public getAllPokemons: any;
+  public apiError: boolean = false;
+
 
 
   public viewList = 'Pokémon';
@@ -29,12 +34,22 @@ export class HomeComponent implements OnInit {
   }[];
 
   constructor(
+
     public _pokedex: PokeAPiService,
     private _pokemonsStore: PokemonsStore,
     private _types: TypesService,
     private _router: Router,
     private route: ActivatedRoute
   ) { }
+
+  public getSearch(value: string) {
+    const filter = this.setAllPokemons.filter((res: any) => {
+      return !res.name.indexOf(value.toLowerCase());
+    })
+
+    this.getAllPokemons = filter;
+  }
+
 
   async ngOnInit(): Promise<void> {
     await this._pokemonsStore.initializeStore();
