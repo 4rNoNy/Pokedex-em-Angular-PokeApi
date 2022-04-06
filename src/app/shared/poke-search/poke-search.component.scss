@@ -1,27 +1,44 @@
-@import '../../../Config-scss/rem-calc.scss';
-:host{
-  section{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+// @import '../../../Config-scss/rem-calc.scss';
+// :host{
+//   section{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
 
-    padding: rem-calc(15) rem-calc(20);
-    background-color: rgba(255, 255,255,0.2);
-    border-radius: rem-calc(10);
-    
-    input{
-      width: 95%;
-      background: none;
-      border: none;
+//     padding: rem-calc(15) rem-calc(20);
+//     background-color: rgba(255, 255,255,0.2);
+//     border-radius: rem-calc(10);
 
-      font-size: rem-calc(18);
+//     input{
+//       width: 95%;
+//       background: none;
+//       border: none;
 
-      color: var(--branco);
+//       font-size: rem-calc(18);
 
-      &::placeholder{
-      color: var(--branco);
+//       color: var(--branco);
 
-      }
+//       &::placeholder{
+//       color: var(--branco);
+
+//       }
+//     }
+//   }
+// }
+.search {
+  display: grid;
+  grid-template: 1fr/1fr 100px;
+  gap: 10px;
+  justify-items: center;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .search--field {
+    width: 100%;
+
+    input {
+      color: white;
     }
   }
 }

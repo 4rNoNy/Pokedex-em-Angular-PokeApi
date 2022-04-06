@@ -16,6 +16,7 @@ export class TypeBadgeComponent implements OnInit {
    * Dados de um tipo de pokémon
    */
   public type: { name: string, color: string, contrast: string };
+  public btn: { name: string, color: string, contrast: string };
 
   /**
    * Construtor da classe com os serviços injetados
@@ -29,6 +30,7 @@ export class TypeBadgeComponent implements OnInit {
    */
   ngOnInit(): void {
     this.type = this._types.pokemonTypes.get(this.id);
+    this.btn = this._types.btnTypes.get(this.id);
   }
 
 }

@@ -1,4 +1,16 @@
-<section class="fadeIn">
+<!-- <section class="fadeIn">
   <input type="text" #input (keyup)="search(input.value)" placeholder="Buscar Pokemon...">
   <img src="assets/search.svg" alt="Buscar Pokemon">
-</section>
+</section> -->
+<form (submit)="doSearch()" class="search">
+  <mat-form-field class="search--field">
+    <mat-label>Procure por nome...</mat-label>
+    <input #input type="text" name="termo_busca" matInput [errorStateMatcher]="matcher" [formControl]="searchTerm"
+      placeholder="Ex: Pikachu" />
+    <mat-error *ngIf="searchTerm.hasError('required')">
+      Nome obrigatório para busca!
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" mat-raised-button class="search--button">Procurar<img src="assets/search.svg"
+      alt="Buscar Pokemon"></button>
+</form>

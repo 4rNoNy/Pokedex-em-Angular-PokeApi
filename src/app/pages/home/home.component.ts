@@ -5,21 +5,17 @@ import { Pokemon } from '../../models/pokemon.model';
 import { TypesService } from './../../service/types.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ngForAnimation } from 'src/assets/animations/animations';
 
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [ngForAnimation]
 })
 export class HomeComponent implements OnInit {
-  //poke-search
-  private setAllPokemons: any;
-  public getAllPokemons: any;
-  public apiError: boolean = false;
-
-
 
   public viewList = 'Pokémon';
   public length$: Observable<number>;
@@ -34,23 +30,22 @@ export class HomeComponent implements OnInit {
   }[];
 
   constructor(
-
     public _pokedex: PokeAPiService,
     private _pokemonsStore: PokemonsStore,
     private _types: TypesService,
     private _router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {
 
-  public getSearch(value: string) {
-    const filter = this.setAllPokemons.filter((res: any) => {
-      return !res.name.indexOf(value.toLowerCase());
-    })
-
-    this.getAllPokemons = filter;
   }
 
-
+  /**
+   * Ao iniciar a home vai buscar os dados dos pokémons.
+   * Como o endpoint de paginação da API retorna o nome e a url para acessar um certo pokémon,
+   * o metodo getPokemonList faz uma junção de pokémons que estão salvos no indexedDB e
+   * pokémons que devem ser pegos na API.
+   * Depois que tem essa junção, salva os novos pokémons no indexedDB
+   */
   async ngOnInit(): Promise<void> {
     await this._pokemonsStore.initializeStore();
     this.length$ = this._pokedex.length$;
@@ -113,6 +108,5 @@ export class HomeComponent implements OnInit {
         this._pokemonsStore.setPokemons = pokemons;
       });
   }
-
 
 }

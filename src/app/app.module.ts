@@ -7,11 +7,13 @@ import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { AlertComponent } from './shared/alert/alert.component';
+
 
 //Modules
+import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -36,7 +38,8 @@ const dbConfig: DBConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoadingComponent
+    LoadingComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

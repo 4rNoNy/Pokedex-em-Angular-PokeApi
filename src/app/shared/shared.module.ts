@@ -53,6 +53,7 @@ const translatePaginator = () => {
     PokeStatusComponent
 
 
+
   ],
   imports: [
     CommonModule,
