@@ -61,7 +61,7 @@ export class DetailsComponent implements OnInit {
         } else {
           // se o pokémon não está no store, então busca na API
           const getPokemon$ = this._pokedex.getPokemonByID(id);
-          this._components.showLoaderUntilCompleted(getPokemon$).subscribe(pokemon => {
+          this._components.showLoaderUntilCompleted(this._pokedex.getPokemonByID(id)).subscribe(pokemon => {
             this.pokemon = this.initializePokémonInformation(pokemon);
           });
         }

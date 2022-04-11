@@ -1,6 +1,8 @@
+
 import { TypesService } from './../../service/types.service';
 import { Pokemon } from './../../models/pokemon.model';
 import { Component, Input, OnInit } from '@angular/core';
+
 
 /**
  * Componente para exibir os dados de um pokémon em formato de card. Utilizado
@@ -16,18 +18,14 @@ export class PokeCardsComponent implements OnInit {
   /**
    * Dados do pokémon para serem exibidos
    */
-  @Input() pokemon: Partial<Pokemon>;
+  @Input() pokemon: Pokemon;
 
-  /**
-   * O número do pokémon
-   */
   public number: string;
 
-  /**
-   * Construtor da classe com os serviços injetados
-   */
+
   constructor(
     private _types: TypesService
+
   ) { }
 
   /**
@@ -36,7 +34,6 @@ export class PokeCardsComponent implements OnInit {
   ngOnInit(): void {
     this.number = String(this.pokemon.id).padStart(3, '0');
   }
-
   /**
    * Vai gerar a string do background do card dependendo de quantos tipos o pokémon tem;
    * - Se tem um tipo só, retorna o hexadecimal com um pouco de alpha no final para transparecia
@@ -53,6 +50,10 @@ export class PokeCardsComponent implements OnInit {
       return `linear-gradient(130deg, ${this._types.pokemonTypes.get(firstTypeID).color} 0%,
       ${this._types.pokemonTypes.get(secondTypeID).color} 100%)`;
     }
+  }
+  borderCard(types): string {
+    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
+    return ` 2px solid ${this._types.pokemonTypes.get(typeID).color}e3`;
   }
 
 }

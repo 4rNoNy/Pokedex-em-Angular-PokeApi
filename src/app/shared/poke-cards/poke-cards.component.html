@@ -1,13 +1,25 @@
-<article class="pokecard" [ngStyle]="{ background: generateCardBackground(pokemon.types) }">
-  <p class="pokecard--pokemon">
-    {{ pokemon.name }} <small>#{{ number }}</small>
+<article class="pokecard" [ngStyle]="{ border: borderCard(pokemon.types)}">
+  <p class="pokecard__pokemon">
+    <span class="pokecard__pokemon__number">#{{ number }}</span>
+    <span class="pokecard__pokemon__type-icon" [ngStyle]="{ background: generateCardBackground(pokemon.types)}"></span>
   </p>
-  <div class="pokecard--images">
-    <img class="pokecard--images--pokeball" src="../../../assets/images/pokeball_1.png" alt="pokeball" />
-    <img class="pokecard--images--sprite" [src]="pokemon.sprites['official'] || pokemon.sprites['front']"
+  <div class="pokecard__images">
+    <img class="pokecard__images__pokeball" src="../../../assets/images/pokeball_1.png" alt="pokeball" />
+    <img class="pokecard__images__sprite" [src]="pokemon.sprites['official'] || pokemon.sprites['front']"
       [alt]="pokemon.name" />
   </div>
-
-  <p class="pokecard--height">Altura: <span>{{pokemon.height * 10}}cm</span></p>
-  <p class="pokecard--weight">Peso: <span>{{(pokemon.weight * 100) / 1000}}kg</span></p>
+  <div class="pokecard__info">
+    <p class="pokecard__images__name">
+      {{ pokemon.name}}
+    </p>
+    <div class="pokecard__info__extra">
+      <div><small>Altura:</small>
+        <p class="pokecard__info__extra__height">{{pokemon.height / 10}}m</p>
+      </div>
+      <div>
+        <small>Peso:</small>
+        <p class="pokecard__info__extra__weight">{{(pokemon.weight * 100) / 1000}}kg</p>
+      </div>
+    </div>
+  </div>
 </article>

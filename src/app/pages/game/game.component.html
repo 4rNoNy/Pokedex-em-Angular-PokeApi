@@ -42,8 +42,10 @@
   </article>
 
   <article *ngIf="pokemon$ | async as pokemon" class="center-content">
-    <img [src]="pokemon.sprites.other['official-artwork'].front_default" class="game--image"
-      [ngClass]="{'reveal': answerCondition !== null}" />
+    <div class="game--image2">
+      <img [src]="pokemon.sprites.other['official-artwork'].front_default" class="game--image"
+        [ngClass]="{'reveal': answerCondition !== null}" />
+    </div>
     <div [ngSwitch]="answerCondition">
       <div class="game--answer center-content" *ngSwitchCase="true">
         <h3>

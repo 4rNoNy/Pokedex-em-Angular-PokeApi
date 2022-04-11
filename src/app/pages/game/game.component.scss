@@ -5,19 +5,21 @@
     flex-direction: column;
     line-height: 1;
     margin: 0;
+    animation: tracking-in-contract-bck-top 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   }
 }
 
 section.game {
   background-color: white;
-  margin: 15px;
+  margin: 0 auto;
   border-radius: var(--border-radius);
   position: relative;
   bottom: 15px;
   min-height: 400px;
+  width: 46.8vw;
 
   .game--generations {
-    background-color: var(--primary-bg);
+    background-color: #363434ed;
     color: white;
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
@@ -36,18 +38,27 @@ section.game {
 
   article {
     flex-direction: column;
-    padding: 15px;
 
-    .game--image {
-      width: 300px;
-      max-width: 300px;
-      height: auto;
-      filter: brightness(0);
+    .game--image2 {
+      background-image: url("../../../assets/images/Edzj6v8XkAEVSrv.jpg");
+      width: 640px;
+      max-width: 640px;
+      height: 440px;
 
-      &.reveal {
-        animation: reveal 2s ease-out forwards;
+      .game--image {
+        width: 300px;
+        max-width: 300px;
+        height: auto;
+        filter: brightness(0);
+
+        &.reveal {
+          animation: reveal 2s ease-out forwards;
+        }
       }
     }
+
+
+
 
     .game--answer {
       flex-direction: column;
@@ -63,6 +74,8 @@ section.game {
       input {
         padding: 8px;
         font-size: 1.2rem;
+        border-radius: var(--border-radius);
+        background-color: rgba($color: #e7e7e4, $alpha: 1.0);
       }
 
       button {

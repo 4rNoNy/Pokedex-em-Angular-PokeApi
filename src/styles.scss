@@ -1,36 +1,14 @@
-@import './Config-scss/variables.scss';
 @import './Config-scss/rem-calc.scss';
 @import './Config-scss/reset.scss';
 @import './Config-scss/btn.scss';
 @import './Config-scss/animation.scss';
 @import './assets/css/variables.scss';
-
 @import './assets/css/variables.scss';
 
 
 
-html {
-  font-family: 'Roboto', sans-serif;
-  background: var(--primary-color);
-}
 
-main {
-  width: rem-calc(600);
-  margin: 0 auto;
-  box-sizing: border-box;
-}
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
--------------------
 /* Imports de váriaveis de CSS */
 
 /* CSS adicionado pelo Angular Material */
@@ -40,11 +18,13 @@ body {
   background-color: var(--primary-bg);
   text-rendering: optimizeLegibility;
   touch-action: manipulation;
+  margin: 0;
 }
+
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 /* CSS especifico de classes */

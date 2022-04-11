@@ -9,8 +9,8 @@ export const ngForAnimation = trigger('listAnimation', [
       [
         style({ opacity: 0 }),
         stagger('100ms',
-        animate('600ms ease-in-out',
-        style({ opacity: 1 })))],
+          animate('200ms ease-in-out',
+            style({ opacity: 1 })))],
       { optional: true }
     )
   ])

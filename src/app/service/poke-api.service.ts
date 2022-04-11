@@ -86,6 +86,9 @@ export class PokeAPiService {
   getPokemonByID(id: number | string): Observable<Pokemon> {
     return this.http.get(`${environment.api_url}/pokemon/${id}`) as Observable<Pokemon>;
   }
+  getTypesByID(id: number | string): Observable<Pokemon> {
+    return this.http.get(`${environment.api_url}/types/${id}`) as Observable<Pokemon>;
+  }
 
   /**
    * Busca um pokémon por nome, vai ser usado no search
@@ -149,6 +152,8 @@ export class PokeAPiService {
     // espera todos os observaveis completarem para retornar o array
     return forkJoin(details);
   }
+
+
 
   /**
    * Filtra a lista de pokémon pegando apenas os dados importantes para a aplicação
