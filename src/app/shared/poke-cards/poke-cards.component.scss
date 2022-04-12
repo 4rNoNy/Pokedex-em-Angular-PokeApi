@@ -104,6 +104,7 @@
     justify-content: center;
 
     .pokecard__images__name {
+      justify-content: center;
       font-size: clamp(2rem, 10%, 5rem);
       position: relative;
       margin: 0 1rem 2rem 1rem;

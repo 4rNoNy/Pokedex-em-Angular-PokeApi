@@ -164,3 +164,15 @@
 		opacity: 1;
 	}
 }
+
+.fadeInOut {
+	-moz-transition: opacity 2s ease-out;
+	-o-transition: opacity 2s ease-out;
+	-webkit-transition: opacity 2s ease-out;
+	transition: opacity 2s ease-out;
+	opacity: 0;
+}
+
+.fadeImg {
+	opacity: 1;
+}

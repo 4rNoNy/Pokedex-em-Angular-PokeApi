@@ -33,38 +33,47 @@
   <img src="assets/error.png" alt="Deu Erro na mostragem dos pokemons" width="100%" *ngIf="apiError">
 </main> -->
 
+
 <!-- Botão para voltar -->
 <button mat-fab color="basic" class="back-button" aria-label="voltar" (click)="_location.back()">
   <mat-icon>arrow_back</mat-icon>
 </button>
-<!-- cabeçalho do site -->
-<header class="page-title">
-  <h1>
-    {{pokemon?.name}}
-    <small>#{{number}}</small>
-  </h1>
-</header>
+<section *ngIf="pokemon" class="fadeIn">
 
-<!-- Seção com os dados do pokémon -->
-<section *ngIf="pokemon" class="pokemon">
-  <!-- Imagem do pokémon -->
-  <img [src]="pokemon.sprites.official" [alt]="pokemon.name" />
-  <!-- Os tipos desse pokémon -->
-  <div class="pokemon--types">
-    <app-type-badge *ngFor="let type of pokemon.types" [id]="type"></app-type-badge>
+  <h1 class="titulo">{{pokemon?.name}}</h1>
+  <div class="pokemon ">
+
+    <div class="pokemon--detalhes">
+      <div class="inner">
+        <table>
+          <article class="pokemon--info">
+            <small>#{{number}}</small>
+            <p>Altura: <span>{{pokemon.height * 10}}cm</span></p>
+            <p>Peso: <span>{{(pokemon.weight * 100) / 1000}}kg</span></p>
+
+            <!-- Os tipos desse pokémon -->
+            <div class="pokemon--types">
+              <app-type-badge *ngFor="let type of pokemon.types" [id]="type"></app-type-badge>
+            </div>
+
+          </article>
+        </table>
+      </div>
+    </div>
+
+    <div class="div--img">
+      <div class="img--container">
+        <img class="img fadeInOut fadeImg" [src]="pokemon.sprites.official" [alt]="pokemon.name" />
+      </div>
+    </div>
+
+
+    <!-- Os status base do pokémon -->
+    <div class="div--stats">
+      <article class="pokemon--stats">
+        <legend>Status base do Pokémon</legend>
+        <app-poke-status *ngFor="let status of pokemon.stats" [status]="status"></app-poke-status>
+      </article>
+    </div>
   </div>
-  <hr />
-
-  <!-- Os status base do pokémon -->
-  <article class="pokemon--stats">
-    <legend>Status base do Pokémon</legend>
-    <app-poke-status *ngFor="let status of pokemon.stats" [status]="status"></app-poke-status>
-  </article>
-  <hr />
-
-  <!-- Mais informações como Altura e Peso -->
-  <article class="pokemon--info">
-    <p>Altura: <span>{{pokemon.height * 10}}cm</span></p>
-    <p>Peso: <span>{{(pokemon.weight * 100) / 1000}}kg</span></p>
-  </article>
 </section>
