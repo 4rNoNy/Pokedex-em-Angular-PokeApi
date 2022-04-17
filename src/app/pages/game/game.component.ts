@@ -24,9 +24,7 @@ export class GameComponent implements OnInit {
     ['eighth', { min: 810, max: 898 }]
   ]);
 
-  /**
-   * Form para o usuário marcar as gerações que ele quer visualizar os pokémons no jogo
-   */
+
   public generationsForm: FormGroup = new FormGroup({
     first: new FormControl(true),
     second: new FormControl(false),
@@ -38,19 +36,17 @@ export class GameComponent implements OnInit {
     eighth: new FormControl(false)
   })
 
-  /**
-   * Observável contendo os dados do pokémon para o jogo. Vem de uma busca na API, então
-   * deixei como any
+  /*
+    dados do pokémon. Vem da API, então deixei como any
    */
   public pokemon$: Observable<any>;
 
-  /**
-   * Campo para resposta com o nome do pokémon
+  /*
+    Campo para resposta
    */
   public answer: FormControl = new FormControl('', Validators.required);
 
-  /**
-   * Condição da resposta. Se acertou é true, se não acertou é false, vazio é campo de input
+  /* acertou é true, se não é false, vazio é campo de input
    */
   public answerCondition: boolean = null;
 
@@ -63,9 +59,9 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-    /**
-     * Assina o status da navegação e se em algum momento for false, então redireciona para a home
-     * e dou um alert de que só pode jogar se estiver conectado
+    /*
+     se o status da navegação se for false,  redireciona para a home
+      e da um alert de que só pode jogar se estiver conectado
      */
     this._pokedex.connection$.subscribe(conn => {
       if (conn === false) {
@@ -76,15 +72,15 @@ export class GameComponent implements OnInit {
     this.pokemon$ = this._components.showLoaderUntilCompleted(this.getPokemon());
   }
 
-  /**
-   * Gera um ID randomico e busca o pokémon com aquele ID para o jogo
+  /*
+    Gera um ID randomico e busca o pokémo
    */
   getPokemon(): Observable<any> {
-    /**
-     * Pega apenas as gerações marcadas
+    /*
+      Pega apenas as gerações marcadas
      */
     const generations = Object.entries(this.generationsForm.value).filter(g => g[1]);
-    // vai gerar os possiveis ids nas gerações selecionadas
+    //  gerar os ids nas gerações selecionadas
     const possiblePokemons = generations.map(g => {
       // pega o minimo e o maximo de cada geração marcada
       const { min, max } = this.generationsRange.get(g[0]);
@@ -96,9 +92,8 @@ export class GameComponent implements OnInit {
     return this._pokedex.getPokemonByID(randomID);
   }
 
-  /**
-   * Tentou adivinhar qual o pokémon
-   * @param name Nome do pokémon que está sendo exibido
+  /*
+    Tentou adivinhar qual o pokémon   
    */
   tryToGuess(name: string): void {
     if (name.split('-')[0].toLowerCase() === this.answer.value.trim().toLowerCase()) {
@@ -108,8 +103,8 @@ export class GameComponent implements OnInit {
     }
   }
 
-  /**
-   * Tenta novamente
+  /*
+   Tenta novamente
    */
   tryAgain(): void {
     this.pokemon$ = this._components.showLoaderUntilCompleted(this.getPokemon());
