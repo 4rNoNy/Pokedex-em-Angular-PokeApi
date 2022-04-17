@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AlertComponent {
 
-  /**
-   * Construtor da classe com os serviços injetados
-   * @param _components Serviço que controla os componentes
-   */
+
   constructor(public _components: ComponentsService) { }
 }

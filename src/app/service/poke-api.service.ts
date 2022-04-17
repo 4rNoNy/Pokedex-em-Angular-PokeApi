@@ -5,9 +5,10 @@ import { ComponentsService } from './components.service';
 import { PokemonsStore } from '../stores/pokemon.store';
 import { PokemonList } from './../models/pokemon-list.model';
 import { Pokemon } from './../models/pokemon.model';
+import { Pokemons } from './../models/pokemons.model';
 import { environment } from 'src/environments/environment';
 
-//Observable
+
 import { forkJoin, Observable, of, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 
@@ -22,7 +23,7 @@ export class PokeAPiService {
   public connection$: Observable<boolean> = this.connectionSubject.asObservable();
 
 
-  private url: string = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100';
+  private url: string = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=896';
 
   constructor(
     private http: HttpClient,
@@ -53,7 +54,7 @@ export class PokeAPiService {
     )
   }
   public apiGetPokemons(url: string): Observable<any> {
-    return this.http.get<any>(url).pipe(
+    return this.http.get<Pokemons>(url).pipe(
       map(
         res => res
       )
@@ -66,7 +67,7 @@ export class PokeAPiService {
     const getPokemons$ = this.http.get(`${environment.api_url}/pokemon?limit=${limit}&offset=${offset}`)
       .pipe(
         tap((res: any) => this.lengthSubject.next(res.count)),
-        map((res: PokemonList) => res.results), // map para pegar apenas os resultados
+        map((res: PokemonList) => res.results), // map para pegar os resultados
         catchError((error) => {
           console.log('getPokemonList', error);
           this._components.showAlertWithMessage('Algo deu errado! Atualize a página e tente novamente');
@@ -79,22 +80,14 @@ export class PokeAPiService {
     return this._components.showLoaderUntilCompleted(getPokemons$);
   }
 
-  /**
-   * Busca um pokémon por ID
-   * @param id ID do pokémon que está buscando
+  /*
+    Busca um pokémon por ID   
    */
   getPokemonByID(id: number | string): Observable<Pokemon> {
     return this.http.get(`${environment.api_url}/pokemon/${id}`) as Observable<Pokemon>;
   }
-  getTypesByID(id: number | string): Observable<Pokemon> {
-    return this.http.get(`${environment.api_url}/types/${id}`) as Observable<Pokemon>;
-  }
-
-  /**
-   * Busca um pokémon por nome, vai ser usado no search
-   * @param name Nome do pokémon para buscar
-   *
-   * TODO: Tratar quando não vem um pokémon na busca, se buscar por qualquer coisa nada a ve
+  /*
+    Busca um pokémon por nome  
    */
   getPokemonByName(name: string): Observable<Pokemon> {
     const getByName$ = this.http.get(`${environment.api_url}/pokemon/${name}`)
@@ -112,9 +105,8 @@ export class PokeAPiService {
     return this._components.showLoaderUntilCompleted(getByName$);
   }
 
-  /**
-   * Busca uma lista de pokémons pelo tipo deles (como grama, eletrico, fogo, etc...)
-   * @param type ID do tipo de pokémon
+  /*
+    Busca uma lista de pokémons pelo tipo
    */
   getPokemonListByType(type: number): Observable<Pokemon[]> {
     const getByType$ = this.http.get(`${environment.api_url}/type/${type}`)
@@ -132,21 +124,19 @@ export class PokeAPiService {
     return this._components.showLoaderUntilCompleted(getByType$);
   }
 
-  /**
-   * Metodo que faz o carregamento dos pokémons de duas formas:
-   * - Se está presente no indexedDB, pega do indexedDB
-   * - Se não está presente, então carrega da API
-   * É uma arrow function pelo contexto do this em mergeMap. Poderia ser feito um .bind() também
-   * @param pokemons Array com os dados dos pokemons, como nome e URL para pegar ID
+  /*
+   Metodo que faz o carregamento dos pokémons de duas formas:
+  Se está presente no indexedDB, pega do indexedDB
+   Se não está presente, então carrega da API
    */
   private loadPokemonsFromApiOrDB = (pokemons: { name: string, url: string }[]): Observable<any> => {
     // pego os pokemons salvos no indexedDB
     const pokemonsDB = this._pokemonStore.getPokemons || {};
-    // crio um array que observaqveis de pokemon iterando os resultados da primeira busca
+    // cria um array 
     const details = pokemons.map(pokemon => {
       // pego o id do pokemon na URL
       const id = pokemon.url.split('pokemon/')[1].replace(/[^0-9]/g, '');
-      // se tem o pokemon desse id no storage devolve ele num observavel, se não devolve a chamada
+      // se tem o pokemon desse id no storage devolve ele, se não devolve a chamada
       return pokemonsDB[id] ? of(pokemonsDB[id]) : this.getPokemonByID(id);
     });
     // espera todos os observaveis completarem para retornar o array
@@ -155,9 +145,9 @@ export class PokeAPiService {
 
 
 
-  /**
-   * Filtra a lista de pokémon pegando apenas os dados importantes para a aplicação
-   * Só deixo retornar se o pokemon tem foto oficial, não quero apresentar sprite de jogo
+  /*
+   Filtra a lista de pokémon pegando apenas os dados importantes para a aplicação
+   Só deixo retornar se o pokemon tem foto oficial
    */
   private pokemonListMap = (pokemonList): Pokemon[] => {
     return pokemonList

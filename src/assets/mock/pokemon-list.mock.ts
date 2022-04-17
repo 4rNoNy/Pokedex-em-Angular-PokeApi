@@ -1,6 +1,4 @@
-/**
- * Dados de uma lista de pokémon, como vem ao chamar dem id na URL
- */
+
 export const POKEMON_LIST = {
   count: 1118,
   next: 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=25',

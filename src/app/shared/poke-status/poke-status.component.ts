@@ -1,4 +1,6 @@
+import { TypesService } from './../../service/types.service';
 import { Component, Input } from '@angular/core';
+
 
 @Component({
   selector: 'app-poke-status',
@@ -7,8 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class PokeStatusComponent {
 
+  @Input() status;
+
+  /*
+  Usei apenas para traduzir os nomes
+   */
   public statusNames: Map<string, { name: string, color: string }> = new Map([
-    ['hp', { name: 'Vida', color: '#FF5959' }],
+    ['hp', { name: 'Vida', color: 'pokemonTypes.color' }],
     ['attack', { name: 'Ataque', color: '#F5AC78' }],
     ['defense', { name: 'Defesa', color: '#FAE078' }],
     ['special-attack', { name: 'Ataque SP', color: '#6890F0' }],
@@ -16,10 +23,18 @@ export class PokeStatusComponent {
     ['speed', { name: 'Velocidade', color: '#FA92B2' }]
   ]);
 
-  /**
-   * Input apenas com os dados de status de um pokémon. Não achei viavel tipar ele
-   * então deixa com esse "any" implicito
-   */
-  @Input() status;
+  constructor(
+    private _types: TypesService
+
+  ) { }
+  ngOnInit(): void {
+  }
+
+
+  colorPokemon(types): string {
+    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
+    return ` ${this._types.pokemonTypes.get(typeID).color}e3`;
+  }
+
 }
 

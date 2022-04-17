@@ -61,9 +61,7 @@ export class GameComponent implements OnInit {
     private router: Router
   ) { }
 
-  /**
-   * Ao entrar na página já busca o primeiro pokémon
-   */
+
   ngOnInit(): void {
     /**
      * Assina o status da navegação e se em algum momento for false, então redireciona para a home

@@ -1,3 +1,6 @@
-<p [ngStyle]="{ 'background': btn.color, color: btn.contrast }">
-  {{ btn.name }}
-</p>
+<div class="row no-gutters tipo" style="text-align-last: center;"
+  [ngStyle]="{ 'background': pokemonTypes.color,'box-shadow': colorS}">
+  <span class="col-8 text-white" style="margin: 5px -3px 5px 5px;font-size: inherit;">{{ pokemonTypes.name
+    }}</span><span style="padding: 0px;
+  width: 20px;"><img src="{{pokemonTypes.img}}" class="img-fluid"></span>
+</div>

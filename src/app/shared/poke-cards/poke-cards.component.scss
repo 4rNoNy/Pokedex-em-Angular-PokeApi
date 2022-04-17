@@ -1,10 +1,10 @@
 .pokecard {
-  background: linear-gradient(to top, #2c2b2e, #16141b);
   justify-content: center;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   padding: 15px;
+  border: solid black 1px;
   transition: 0.2s ease-in-out;
   filter: var(--filter-shadow);
   cursor: pointer;
@@ -12,8 +12,7 @@
   &:hover {
     transition: filter 0.3s ease-in-out;
     filter: drop-shadow(3px 8px 6px black);
-    -moz-box-shadow: 0px 20px 20px #86CEEB;
-    -webkit-box-shadow: 0px 20px 20px #86CEEB;
+    box-shadow: 0px 20px 20px #86CEEB;
     ;
 
     .pokecard__images {

@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     contrast: string;
   }[];
 
+
   constructor(
     public _pokedex: PokeAPiService,
     private _pokemonsStore: PokemonsStore,
@@ -39,12 +40,11 @@ export class HomeComponent implements OnInit {
 
   }
 
-  /**
-   * Ao iniciar a home vai buscar os dados dos pokémons.
-   * Como o endpoint de paginação da API retorna o nome e a url para acessar um certo pokémon,
-   * o metodo getPokemonList faz uma junção de pokémons que estão salvos no indexedDB e
-   * pokémons que devem ser pegos na API.
-   * Depois que tem essa junção, salva os novos pokémons no indexedDB
+  /*
+    Ao iniciar vai buscar os dados dos pokémons.
+    o metodo getPokemonList faz uma junção de pokémons que estão salvos no indexedDB e
+    pokémons que devem ser pegos na API e
+    depois salva os novos pokémons no indexedDB
    */
   async ngOnInit(): Promise<void> {
     await this._pokemonsStore.initializeStore();
@@ -53,10 +53,8 @@ export class HomeComponent implements OnInit {
     this.getPokemonPaginatorList();
   }
 
-  /**
-   * Busca a lista de pokemons que deve ser exibida quando está com o campo de busca e páginador
-   * @param limit Quantidade de itens que deve trazer
-   * @param offset Numero de itens que deve pular para então buscar dados
+  /*
+   Busca a lista de pokemons para páginador
    */
   getPokemonPaginatorList(limit: number = 25, offset: number = 0): void {
     this._pokedex.getPokemonList(limit, offset)
@@ -66,18 +64,16 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  /**
-   * Muda a página ao avançar, voltar ou alterar o tamanho limite. Atribui o novo valor do limite
-   * e calcula o offset pela pagina atual * tamanho de itens, vai dar quantos deve pular.
+  /*
+    Muda a página ao avançar, voltar ou alterar o tamanho limite.
    */
   changePage(event): void {
     this.limit = event.pageSize;
     this.getPokemonPaginatorList(this.limit, event.pageIndex * this.limit);
   }
 
-  /**
-   * Ao clicar para buscar no componente de search vai disparar essa função que busca um
-   * pokémon por nome e já direciona para a página de detalhes
+  /*
+  Buscar os pokemons e redirecionar para detalhes 
    */
   onSearch(searchTerm: string): void {
     this._pokedex.getPokemonByName(searchTerm).subscribe(pokemon => {
@@ -88,8 +84,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Navega para a página do pokémon após clique em card
+  /*
+    Navega para a página do pokémon após clique em card
    */
   goToPokemonDetails(pokemon): void {
     this._router.navigate([pokemon.id], {
@@ -98,8 +94,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Carrega todos os pokémons de um determinado tipo
+  /*
+    Carrega todos os pokémons de um determinado tipo
    */
   loadPokemonByType(id: number): void {
     this._pokedex.getPokemonListByType(id)

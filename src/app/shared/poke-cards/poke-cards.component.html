@@ -1,4 +1,4 @@
-<article class="pokecard" [ngStyle]="{ border: borderCard(pokemon.types)}">
+<article class="pokecard" [ngStyle]="{'background': generateCardBackground(pokemon.types)}">
   <p class="pokecard__pokemon">
     <span class="pokecard__pokemon__number">#{{ number }}</span>
     <span class="pokecard__pokemon__type-icon" [ngStyle]="{ background: generateCardBackground(pokemon.types)}"></span>

@@ -7,28 +7,23 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./type-badge.component.scss']
 })
 export class TypeBadgeComponent implements OnInit {
-  /**
-    * ID para buscar os dados do type
-    */
+
   @Input() id: number;
 
-  /**
-   * Dados de um tipo de pokémon
-   */
-  public btn: { name: string, color: string, contrast: string };
 
-  /**
-   * Construtor da classe com os serviços injetados
-   */
+  public colorS: string;
+  public pokemonTypes: { name: string, color: string, contrast: string, img: string };
+
   constructor(
     private _types: TypesService
   ) { }
 
-  /**
-   * Ao inicializar pega os dados de um tipo, como nome e cores para a badge
+  /*
+    Pega os dados de um tipo
    */
   ngOnInit(): void {
-    this.btn = this._types.btnTypes.get(this.id);
+    this.pokemonTypes = this._types.pokemonTypes.get(this.id);
+    this.colorS = ` 0 0 20px ${this._types.pokemonTypes.get(this.id).color}`;
   }
 
 }

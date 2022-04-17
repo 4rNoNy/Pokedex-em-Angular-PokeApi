@@ -3,7 +3,9 @@
 @import './Config-scss/btn.scss';
 @import './Config-scss/animation.scss';
 @import './assets/css/variables.scss';
-@import './assets/css/variables.scss';
+
+@import '~bootstrap/scss/bootstrap';
+
 
 
 
@@ -14,41 +16,30 @@
 /* CSS adicionado pelo Angular Material */
 html,
 body {
-  height: 100%;
   text-rendering: optimizeLegibility;
   touch-action: manipulation;
-  margin: 0;
-}
-
-
-body {
   margin: 0;
   font-family: 'Lato', sans-serif;
 }
 
+* {
+  font-family: 'Lato', sans-serif
+}
+
 /* CSS especifico de classes */
 header.page-title {
-  background-color: #f04037;
+  background-color: white;
   display: flex;
-  height: clamp(20vh, 30%, 45vh);
+  height: 200px;
   justify-content: center;
   align-items: flex-end;
   position: relative;
   margin-bottom: 10%;
 
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 100%;
-    border-left: 0px solid transparent;
-    border-right: 98vw solid transparent;
-    border-top: 40vh solid #f04037;
-  }
 
   h1 {
     font-size: clamp(2rem, 10vw, 5rem);
-    color: white;
+    color: black;
     text-transform: capitalize;
     position: relative;
     z-index: 100;

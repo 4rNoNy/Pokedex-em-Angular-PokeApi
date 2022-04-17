@@ -7,7 +7,7 @@ import { PokeCardsComponent } from './poke-cards/poke-cards.component';
 import { TypeBadgeComponent } from './type-badge/type-badge.component';
 import { PokeStatusComponent } from './poke-status/poke-status.component';
 
-//Biblioteca
+//Bibliotecas
 import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatButton, MatButtonModule } from '@angular/material/button';
@@ -18,8 +18,8 @@ import { MatCheckboxModule, MatCheckbox } from '@angular/material/checkbox';
 import { MatIconModule, MatIcon } from '@angular/material/icon';
 
 
-/**
- * Função para pegar o label do paginador
+/*
+ label do paginador
  */
 const getRangeLabel = (page: number, pageSize: number, length: number) => {
   length = Math.max(length, 0);
@@ -31,9 +31,9 @@ const getRangeLabel = (page: number, pageSize: number, length: number) => {
   return `${start + 1} - ${end} de ${length}`;
 }
 
-/**
- * Traduz os textos do paginador
- */
+/*
+Tradutor paginator
+*/
 const translatePaginator = () => {
   const paginatorIntl = new MatPaginatorIntl();
 

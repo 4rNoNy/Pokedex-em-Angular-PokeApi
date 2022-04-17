@@ -1,9 +1,16 @@
-<div class="pokestatus">
-  <p class="pokestatus--name">{{ statusNames.get(status.stat.name).name }}</p>
-  <div class="pokestatus--container">
-    <div class="pokestatus--value" [ngStyle]="{
-        width: status.base_stat + 'px',
-        background: statusNames.get(status.stat.name).color
-      }"></div>
-  </div>
+<div>
+  <tr style="display: flex;">
+    <td class="text-right font-weight-bold" style="white-space: nowrap;width: 91px; padding-right: 20px;">
+      {{ statusNames.get(status.stat.name).name }}</td>
+    <td colspan="3">
+      <div class="progress" style="width: 226px;">
+        <div class="progress-bar progress-bar-striped progress-bar-animated rounded-sm" role="progressbar" [ngStyle]="{
+          width: status.base_stat + '%'
+        }" aria-valuemin="0" aria-valuemax="250" id="aling">
+          <span> {{ status.base_stat }} </span>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr></tr>
 </div>

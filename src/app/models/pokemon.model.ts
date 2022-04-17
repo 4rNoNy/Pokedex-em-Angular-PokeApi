@@ -1,8 +1,3 @@
-/**
- * Interface para tipar os dados de pokém pós map.
- * O retorno da API é muito extenso e traz muito coisa que não aproveito. Então
- * mapeio e deixo só esses
- */
 export interface Pokemon {
   /**
    * Tamanho de um pokémon em decimetros

@@ -1,14 +1,15 @@
 <!-- cabeçalho do site -->
 <header class="page-title">
   <!-- Botão para voltar -->
-  <button mat-fab color="basic" class="back-button" aria-label="voltar" (click)="_location.back()">
+  <button mat-fab color="basic" class="back-button" style="position: fixed;" aria-label="voltar"
+    (click)="_location.back()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <h1>Quem é esse Pokémon?</h1>
+  <h1 style="text-shadow: 1px 2px 4px rgba(150, 150, 150, 1);">Quem é esse Pokémon?</h1>
 </header>
 
 <section class="game">
-  <article class="game--generations">
+  <article class="game--generations shadow-lg p-3 mb-5 bg-white rounded">
     <h2>
       Escolha as gerações que deseja jogar?<br />
       (Nome dos iniciais para referência)
@@ -42,7 +43,7 @@
   </article>
 
   <article *ngIf="pokemon$ | async as pokemon" class="center-content">
-    <div class="game--image2">
+    <div class="game--image2" style="border-radius: 25px;">
       <img [src]="pokemon.sprites.other['official-artwork'].front_default" class="game--image"
         [ngClass]="{'reveal': answerCondition !== null}" />
     </div>

@@ -1,8 +1,10 @@
 import { Pokemon } from 'src/app/models/pokemon.model';
+import { Pokemons } from 'src/app/models/pokemons.model';
+import { TypesService } from './../../service/types.service';
 import { ComponentsService } from 'src/app/service/components.service';
 import { PokeAPiService } from 'src/app/service/poke-api.service';
 import { PokemonsStore } from './../../stores/pokemon.store';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -18,17 +20,21 @@ export class DetailsComponent implements OnInit {
    * Dados do pokémon que vieram na navegação ou que vai ser pego por id
    */
   public pokemon: Pokemon;
-
+  public id!: number;
+  public pokemons!: Pokemons;
   /**
    * Numero do pokémon na listagem oficial
    */
   public number: string;
 
-  /**
-   * Construtor da classe com os serviços injetados
-   */
+
+  public colorS: string;
+  public pokemonTypes: { name: string, color: string, contrast: string, img: string };
+
+
   constructor(
     private _router: Router,
+    private _types: TypesService,
     private route: ActivatedRoute,
     private _pokemonStore: PokemonsStore,
     private _pokedex: PokeAPiService,
@@ -36,13 +42,10 @@ export class DetailsComponent implements OnInit {
     public _location: Location
   ) { }
 
-  /**
-   * Vai pegar os dados do pokémon, pode fazer isso de algumas formas:
-   * - Primeiro verifica se veio na navegação,
-   * - Caso não veio, pega no store,
-   * - Se ainda assim não veio, busca via HTTP
-   */
+
   ngOnInit(): void {
+
+
     this.route.paramMap.subscribe(async (params: ParamMap) => {
       // pega o id
       const id = params.get('id');
@@ -67,7 +70,36 @@ export class DetailsComponent implements OnInit {
         }
       }
     });
+    this.getIdLink();
+    this.getdetalhes();
   }
+
+
+
+  getdetalhes() {
+    const url = `https://pokeapi.co/api/v2/pokemon/${this.id}`;
+    this._pokedex.apiGetPokemons(url).subscribe(x => {
+      this.pokemons = x;
+    })
+  }
+  getIdLink() {
+    this.route.queryParams.subscribe(x => {
+      this.id = x['id'];
+    })
+  }
+
+  colorType(types): string {
+    const typeID = +types;
+    return ` ${this._types.pokemonTypes.get(typeID).color}82`;
+  }
+  // [ngStyle]="{ background: colorType(pokemon?.types[0])}"
+
+  shadowBox(types): string {
+    const typeID = +types;
+    return ` 0 0 20px ${this._types.pokemonTypes.get(typeID).color}`;
+  }
+  //  [ngStyle]="{ 'box-shadow': shadowBox(pokemon?.types[0])}"
+
 
   /**
    * Como os dados da API vem diferente dos usados na aplicação, então organizo de forma correta
