@@ -34,14 +34,14 @@ padding-right: 2rem;">
             </tr>
             <tr>
               <td class="text-right font-weight-bold">Habilidades</td>
-              <td *ngFor="let a of pokemons?.abilities" style="color:black;">{{ a.ability?.name | titlecase}}</td>
+              <td *ngFor="let a of pokemons?.abilities" style="color:black;">{{ a.ability?.name}}</td>
             </tr>
             <tr>
               <td class="text-right font-weight-bold" style="vertical-align: middle;">Tipo</td>
-              <td>
+              <td style="vertical-align: middle;">
                 <div data-toggle="modal" data-target="#typesModal" class="row"
                   style="flex-wrap: nowrap; padding: 0;                ">
-                  <div class="text-capitalize" Style="padding: 0; display: flex;">
+                  <div class="text-capitalize" Style="padding: 0 20px 0 0; display: flex;">
                     <app-type-badge *ngFor="let type of pokemon.types" [id]="type"></app-type-badge>
                   </div>
                 </div>
