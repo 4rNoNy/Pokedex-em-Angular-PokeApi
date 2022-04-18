@@ -75,10 +75,10 @@ padding-right: 2rem;">
       <div class="div--stats col-lg-3 col-md-2 my-auto mx-auto d-flex flex-wrap justify-content-center">
         <div class="inner">
 
-          <table style="border-radius: 25px !important;" class="shadow p-3 bg-white rounded table table-borderless">
-            <legend class="rounded-pill " style="color: black;text-align: center;">Status
-              base
-              do Pokémon</legend>
+          <table style="border-radius: 25px !important; " class="shadow p-3 bg-white rounded table table-borderless">
+            <legend class="rounded-pill " style="color: black;text-align: center; margin-top: 5px;
+            margin-bottom: 5px;">Status
+              Base</legend>
             <app-poke-status *ngFor=" let status of pokemon.stats" [status]="status">
             </app-poke-status>
           </table>
