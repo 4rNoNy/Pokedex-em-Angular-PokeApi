@@ -59,7 +59,7 @@
 
     .pokecard__pokemon__number {
       background-color: rgba(145, 145, 145, 0.2);
-      color: white;
+      color: var(--branco);
       padding: 0.1rem 0.3rem;
       border-radius: 0.6rem;
       font-size: 1rem;
@@ -86,7 +86,7 @@
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
-    color: white;
+    color: var(--branco);
     font-size: 1rem;
   }
 
@@ -94,7 +94,7 @@
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
-    color: white;
+    color: var(--branco);
     font-size: 1rem;
   }
 

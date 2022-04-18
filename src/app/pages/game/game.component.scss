@@ -2,6 +2,7 @@
   h1 {
     text-align: center;
     display: flex;
+    text-transform: none;
     flex-direction: column;
     line-height: 1;
     margin: 0;
@@ -10,7 +11,7 @@
 }
 
 section.game {
-  background-color: white;
+  background-color: var(--branco);
   margin: 0 auto;
   border-radius: var(--border-radius);
   position: relative;
@@ -19,8 +20,8 @@ section.game {
   width: 46.8vw;
 
   .game--generations {
-    background-color: white;
-    color: black;
+    background-color: var(--branco);
+    color: var(---primary-bg);
     border-radius: 25px !important;
     border: 1px solid #0000005e;
 

@@ -28,7 +28,7 @@ body {
 
 /* CSS especifico de classes */
 header.page-title {
-  background-color: white;
+  background-color: var(--branco);
   display: flex;
   height: 200px;
   justify-content: center;
@@ -39,7 +39,7 @@ header.page-title {
 
   h1 {
     font-size: clamp(2rem, 10vw, 5rem);
-    color: black;
+    color: var(---primary-bg);
     text-transform: capitalize;
     position: relative;
     z-index: 100;

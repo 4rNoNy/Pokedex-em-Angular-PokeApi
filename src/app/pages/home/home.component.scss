@@ -5,8 +5,8 @@ section {
   &.form {
     margin: 0 auto;
     position: relative;
-    width: 80vw;
-    background-color: white;
+    width: 55vw;
+    background-color: var(--branco);
     border-radius: 25px !important;
     border: 1px solid #d9d5d5a3;
     transition: 0.2s ease-in-out;
@@ -20,7 +20,7 @@ section {
   }
 
   h2 {
-    color: black;
+    color: var(---primary-bg);
     text-align: center;
   }
 }
@@ -41,7 +41,7 @@ mat-tab-group {
 }
 
 mat-tab {
-  background-color: white;
+  background-color: var(--branco);
 }
 
 .responsive-grid {
@@ -69,6 +69,6 @@ mat-tab {
   h2 {
     margin-top: 15px;
     text-align: center;
-    color: black;
+    color: var(---primary-bg);
   }
 }
