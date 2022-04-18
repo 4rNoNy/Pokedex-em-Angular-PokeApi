@@ -16,6 +16,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const dbConfig: DBConfig = {
   name: 'pokemonDB',
@@ -48,7 +49,8 @@ const dbConfig: DBConfig = {
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     NgxIndexedDBModule.forRoot(dbConfig),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

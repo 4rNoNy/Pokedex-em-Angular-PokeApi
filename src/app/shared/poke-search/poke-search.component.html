@@ -1,7 +1,7 @@
 <form (submit)="doSearch()" class="search">
   <mat-form-field class="search--field">
     <mat-label>Procure por nome...</mat-label>
-    <input #input type="text" name="termo_busca" matInput [errorStateMatcher]="matcher" [formControl]="searchTerm"
+    <input #input type="text" name="termo_busca" autocomplete="off" matInput [errorStateMatcher]="matcher" [formControl]="searchTerm"
       placeholder="Ex: Pikachu" />
     <mat-error *ngIf="searchTerm.hasError('required')">
       Nome obrigatório para busca!
