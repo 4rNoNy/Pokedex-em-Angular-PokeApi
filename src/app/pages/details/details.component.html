@@ -13,7 +13,7 @@ padding-right: 2rem;">
 
     <div class="row justify-content-center shadow-lg  p-3 mb-5 rounded"
       style="border-radius: 25px !important; position: relative; padding-bottom: 3rem;"
-      [ngStyle]="{background: colorType(pokemon?.types[0])}">
+      [ngStyle]="{background: colorType(pokemon?.types[0])+'82'}">
 
       <div class="col-lg-3 col-md-2 d-flex flex-wrap justify-content-center pokemon--detalhes">
         <div class="inner">
@@ -34,7 +34,16 @@ padding-right: 2rem;">
             </tr>
             <tr>
               <td class="text-right font-weight-bold">Habilidades</td>
-              <td *ngFor="let a of pokemons?.abilities" style="color:black;">{{ a.ability?.name}}</td>
+              <td style="height: 40px;">
+                <span *ngFor="let abilidades of pokemons?.abilities"
+                  [ngStyle]="{background: colorType(pokemon?.types[0])}" style="border-radius: 2px;
+                padding: 2px 3px;
+                margin-right: 6px;line-height: normal;">
+                  <span class="text-uppercase"
+                    style="color:white; border-radius: 2px; white-space: nowrap; display: unset; margin-top: 0px;">{{
+                    abilidades.ability?.name}}</span>
+                </span>
+              </td>
             </tr>
             <tr>
               <td class="text-right font-weight-bold" style="vertical-align: middle;">Tipo</td>

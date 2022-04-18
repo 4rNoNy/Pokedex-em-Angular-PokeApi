@@ -20,16 +20,19 @@ export class DetailsComponent implements OnInit {
    * Dados do pokémon que vieram na navegação ou que vai ser pego por id
    */
   public pokemon: Pokemon;
-  public id!: number;
-  public pokemons!: Pokemons;
+  public id!: string;
+
+
+
+  public pokemons: Pokemons;
+
+
   /**
    * Numero do pokémon na listagem oficial
    */
   public number: string;
 
 
-  public colorS: string;
-  public pokemonTypes: { name: string, color: string, contrast: string, img: string };
 
 
   constructor(
@@ -45,13 +48,15 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.route.paramMap.subscribe(async (params: ParamMap) => {
       // pega o id
       const id = params.get('id');
       // transforma o id em numero para apresentação
       this.number = id.padStart(3, '0');
+      this.id = id;
+
       // Se existe uma navegação, ou seja, veio da home, entra aqui e pega o estado da navegação
+
       if (this._router.getCurrentNavigation()) {
         this.pokemon = this.initializePokémonInformation(this._router.getCurrentNavigation().extras.state);
       } else {
@@ -70,27 +75,21 @@ export class DetailsComponent implements OnInit {
         }
       }
     });
-    this.getIdLink();
-    this.getdetalhes();
+    this.getNewModule();
+
   }
 
-
-
-  getdetalhes() {
+  getNewModule() {
     const url = `https://pokeapi.co/api/v2/pokemon/${this.id}`;
     this._pokedex.apiGetPokemons(url).subscribe(x => {
       this.pokemons = x;
     })
   }
-  getIdLink() {
-    this.route.queryParams.subscribe(x => {
-      this.id = x['id'];
-    })
-  }
+
 
   colorType(types): string {
     const typeID = +types;
-    return ` ${this._types.pokemonTypes.get(typeID).color}82`;
+    return ` ${this._types.pokemonTypes.get(typeID).color}`;
   }
   // [ngStyle]="{ background: colorType(pokemon?.types[0])}"
 

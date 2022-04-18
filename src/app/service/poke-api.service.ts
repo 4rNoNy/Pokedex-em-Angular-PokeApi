@@ -41,19 +41,11 @@ export class PokeAPiService {
 
   get apiListAllPokemons(): Observable<any> {
     return this.http.get<any>(this.url).pipe(
-      tap(res => res),
-      tap(res => {
-        res.results.map((resPokemons: any) => {
+      tap(res => res)
 
-          this.apiGetPokemons(resPokemons.url).subscribe(
-            res => resPokemons.status = res
-          );
-
-        })
-      })
     )
   }
-  public apiGetPokemons(url: string): Observable<any> {
+  public apiGetPokemons(url: string): Observable<Pokemons> {
     return this.http.get<Pokemons>(url).pipe(
       map(
         res => res
