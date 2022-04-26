@@ -26,7 +26,6 @@ export class PokeCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.number = String(this.pokemon.id).padStart(3, '0');
-    console.log(this.pokemon);
   }
   /*
    gera o background do card 
