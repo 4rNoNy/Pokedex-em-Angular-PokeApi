@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   padding: 15px;
-  border: solid black 1px;
   transition: 0.2s ease-in-out;
   filter: var(--filter-shadow);
   cursor: pointer;
@@ -48,7 +47,7 @@
       width: 200px;
       height: auto;
       position: relative;
-      margin-top: 15%;
+      margin-top: 14%;
 
     }
 

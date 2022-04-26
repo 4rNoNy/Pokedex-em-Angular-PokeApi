@@ -41,17 +41,4 @@ export class PokeCardsComponent implements OnInit {
       ${this._types.pokemonTypes.get(secondTypeID).color} 100%)`;
     }
   }
-  borderCard(types): string {
-    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
-    return ` 2px solid ${this._types.pokemonTypes.get(typeID).color}e3`;
-  }
-  imgType(types): string {
-    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
-    return `${this._types.pokemonTypes.get(typeID).img}`;
-  }
-  idType(types): string {
-    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
-    return `${this._types.pokemonTypes.get(typeID)}`;
-  }
-
 }
