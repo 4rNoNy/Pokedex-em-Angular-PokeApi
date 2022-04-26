@@ -26,6 +26,7 @@ export class PokeCardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.number = String(this.pokemon.id).padStart(3, '0');
+    console.log(this.pokemon);
   }
   /*
    gera o background do card 
@@ -33,11 +34,11 @@ export class PokeCardsComponent implements OnInit {
   generateCardBackground(types): string {
     if (types.length === 1) {
       const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
-      return `${this._types.pokemonTypes.get(typeID).color}e3`;
+      return `${this._types.pokemonTypes.get(typeID).color}`;
     } else {
       const firstTypeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
       const secondTypeID = +types[1].type.url.split('type/')[1].replace(/[^0-9]/g, '');
-      return `linear-gradient(130deg, ${this._types.pokemonTypes.get(firstTypeID).color} 0%,
+      return `linear-gradient(180deg, ${this._types.pokemonTypes.get(firstTypeID).color} 0%,
       ${this._types.pokemonTypes.get(secondTypeID).color} 100%)`;
     }
   }
@@ -49,6 +50,9 @@ export class PokeCardsComponent implements OnInit {
     const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
     return `${this._types.pokemonTypes.get(typeID).img}`;
   }
-
+  idType(types): string {
+    const typeID = +types[0].type.url.split('type/')[1].replace(/[^0-9]/g, '');
+    return `${this._types.pokemonTypes.get(typeID)}`;
+  }
 
 }
