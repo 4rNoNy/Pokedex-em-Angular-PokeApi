@@ -6,4 +6,4 @@ Na página de detalhes é possível ver as estátisticas do pokémon como ataque
 Além disso, a home também possui uma terceira opção que é de um jogo inspirado no "Who's that Pokémon" (Quem é esse Pokémon?) que sempre acontecia nos intervalos de cada episódio. É um jogo simples onde se deve tentar adivinhar o nome do pokémon vendo apenas a sombra dele.
 
 ## Iniciar a Aplicação
-Para executar o projetodigite o comando "npm i" no terminal após terminar de fazer o clone, depois que terminar a instalaçao das dependências execute o comando "npm start". Após finalizar basta abrir o navegador e entrar em http://localhost:4200/.
+Para executar o projeto digite o comando "npm i" no terminal após terminar de fazer o clone, depois que terminar a instalaçao das dependências execute o comando "npm start". Após finalizar basta abrir o navegador e entrar em http://localhost:4200/.
