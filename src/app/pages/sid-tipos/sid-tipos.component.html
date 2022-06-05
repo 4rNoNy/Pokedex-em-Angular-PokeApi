@@ -1,0 +1,15 @@
+<h1>Tipos</h1>
+
+<div style="border-radius: 25px !important; color:white; margin: 5% 21%;" class="shadow-lg p-3 mb-5 bg-white rounded ">
+  <h2 class="text-center Section-Heading " style="color: black;">
+    Selecione um tipo para ver os Pokémons</h2>
+  <div class="type--container">
+    <app-type-badge style="cursor: pointer;" *ngFor="let type of types; let i = index"
+      (click)="loadPokemonByType(i + 1)" [id]="i + 1">
+    </app-type-badge>
+  </div>
+</div>
+<div class="responsive-grid" *ngIf="pokemonsByType" [@listAnimation]="pokemonsByType.length">
+  <pokecards *ngFor="let pokemon of pokemonsByType" [pokemon]="pokemon" (click)="goToPokemonDetails(pokemon)">
+  </pokecards>
+</div>

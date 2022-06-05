@@ -7,6 +7,7 @@ import { PokeCardsComponent } from './poke-cards/poke-cards.component';
 import { TypeBadgeComponent } from './type-badge/type-badge.component';
 import { PokeStatusComponent } from './poke-status/poke-status.component';
 
+
 //Bibliotecas
 import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatInput, MatInputModule } from '@angular/material/input';

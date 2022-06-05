@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidenavComponent } from './pages/sidenav/sidenav.component';
+import { BodyComponent } from './pages/body/body.component';
 
 const dbConfig: DBConfig = {
   name: 'pokemonDB',
@@ -40,7 +42,10 @@ const dbConfig: DBConfig = {
   declarations: [
     AppComponent,
     LoadingComponent,
-    AlertComponent
+    AlertComponent,
+    SidenavComponent,
+    BodyComponent
+
   ],
   imports: [
     BrowserModule,

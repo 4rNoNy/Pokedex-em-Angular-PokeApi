@@ -1,61 +1,43 @@
+import { ngForAnimation } from './../../../assets/animations/animations';
+import { Observable } from 'rxjs';
+import { Pokemon } from './../../models/pokemon.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PokemonsStore } from './../../stores/pokemon.store';
 import { PokeAPiService } from './../../service/poke-api.service';
 import { Component, OnInit } from '@angular/core';
-import { Pokemon } from '../../models/pokemon.model';
-import { TypesService } from './../../service/types.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { ngForAnimation } from 'src/assets/animations/animations';
 
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  selector: 'app-sid-pokemons',
+  templateUrl: './sid-pokemons.component.html',
+  styleUrls: ['./sid-pokemons.component.scss'],
   animations: [ngForAnimation]
 })
-export class HomeComponent implements OnInit {
+export class SidPokemonsComponent implements OnInit {
 
   public viewList = 'Pokémon';
   public length$: Observable<number>;
   public limit = 25;
   public limitOptions = [10, 25, 50];
   public pokemonsPaginated: Partial<Pokemon>[];
-  public pokemonsByType: Partial<Pokemon>[];
-  public types: {
-    name: string;
-    color: string;
-    contrast: string;
-  }[];
 
 
   constructor(
     public _pokedex: PokeAPiService,
     private _pokemonsStore: PokemonsStore,
-    private _types: TypesService,
     private _router: Router,
     private route: ActivatedRoute
-  ) {
+  ) { }
 
-  }
-
-  /*
-    Ao iniciar vai buscar os dados dos pokémons.
-    o metodo getPokemonList faz uma junção de pokémons que estão salvos no indexedDB e
-    pokémons que devem ser pegos na API e
-    depois salva os novos pokémons no indexedDB
-   */
   async ngOnInit(): Promise<void> {
     await this._pokemonsStore.initializeStore();
     this.length$ = this._pokedex.length$;
-    this.types = Array.from(this._types.pokemonTypes, (type) => type[1]);
     this.getPokemonPaginatorList();
   }
-
   /*
-   Busca a lista de pokemons para páginador
-   */
+  Busca a lista de pokemons para páginador
+  */
   getPokemonPaginatorList(limit: number = 25, offset: number = 0): void {
     this._pokedex.getPokemonList(limit, offset)
       .subscribe((pokemons) => {
@@ -63,7 +45,6 @@ export class HomeComponent implements OnInit {
         this._pokemonsStore.setPokemons = pokemons;
       });
   }
-
   /*
     Muda a página ao avançar, voltar ou alterar o tamanho limite.
    */
@@ -92,17 +73,6 @@ export class HomeComponent implements OnInit {
       relativeTo: this.route,
       state: { pokemon }
     });
-  }
-
-  /*
-    Carrega todos os pokémons de um determinado tipo
-   */
-  loadPokemonByType(id: number): void {
-    this._pokedex.getPokemonListByType(id)
-      .subscribe(pokemons => {
-        this.pokemonsByType = pokemons;
-        this._pokemonsStore.setPokemons = pokemons;
-      });
   }
 
 }

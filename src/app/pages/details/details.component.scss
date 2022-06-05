@@ -1,89 +1,140 @@
-.back-button {
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	z-index: 100;
-}
+.content {
+	position: relative;
 
-.MainDiv {
-	font-family: 'Lato', sans-serif;
-	color: #505050;
-}
-
-.SubSections .row .col {
-	flex-basis: unset;
-}
-
-div {
 	width: auto;
-	padding-bottom: 0.25rem;
-	padding-top: 0.25rem;
+	display: flex;
+	color: #193c6c;
+	z-index: 3;
+	transition: opacity padding 0.5s ease-in-out;
 }
 
-h1 {
-	font-size: 2.5rem;
+.content>div {
+	width: 100%;
 }
 
-.pokemon--detalhes {
-	perspective: 400px;
-	margin: 8% 0;
-	width: 37em;
-	padding-right: 0;
-	margin-right: 0;
-	opacity: 1;
-	transition: opacity 0.6s ease-in-out;
+.title {
+	display: flex;
+	justify-content: stretch;
+	align-items: center;
+	width: 95%;
+	height: 60%;
 }
 
-.pokemon--detalhes:hover .inner {
-	transform: rotate(0)
+.stats .title {
+	width: min-content;
+	box-sizing: border-box;
+	padding-left: 140px;
+
+	font-weight: 700;
+	font-size: 30px;
 }
 
-.pokemon--detalhes .inner {
-	transition: .3s;
-	transform: rotateY(30deg);
+.subgrid {
+	display: flex;
+	flex-direction: column;
+	height: 10rem;
+	align-items: flex-end;
+	justify-content: end;
+	padding-left: 140px;
+	height: 50%;
+	width: 49%;
+
 }
 
-.inner {
-	.table>tr:first-child>td {
-		border: none;
-	}
+.subgrid .name {
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 4rem;
+	color: #193c6c;
+	text-transform: capitalize;
+	height: 27px;
+	width: 100%;
+	z-index: 2;
+}
+
+.row .name {
+	width: 150px;
+	text-transform: capitalize;
+}
+
+.details {
+	grid-area: details;
+	position: absolute;
+	left: 145px;
+	width: 305px;
+	top: 280px;
+	height: 80px;
+
+}
+
+.details .row {
+	display: flex;
+	text-transform: capitalize;
+	justify-content: space-between;
+	width: 305px;
+	margin-left: 5px;
+
+
+}
+
+.details .row :first-child {
+	font-weight: bold;
+	width: 63px;
+}
+
+.details .row :last-child {
+	width: 63px;
+	text-align: end;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.picture {
+	height: 370px;
+	width: 375px;
+	z-index: 2;
+	padding-top: 85px;
 }
 
 img {
-	opacity: 1;
-	transition: opacity .6s ease-in-out;
+	height: 287px;
+}
+
+
+.stats {
+	display: flex;
+	justify-content: flex-start;
+	align-items: baseline;
+	height: 40%;
+	padding-top: 10px;
+
 
 }
 
-.div--stats {
-	padding-left: 0;
-	padding-right: 3rem !important;
-	margin-left: 0 !important;
-	margin-right: 0 !important;
-	perspective: 400px;
-	margin: 4em auto;
-	width: 18em;
-	padding-left: 0;
-	padding-right: 1rem; // Changed 0 earlier
-	-webkit-font-smoothing: antialiased !important;
+.number {
+	position: absolute;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-size: 270px;
+
+	color: rgba(255, 255, 255, 0.18);
+	user-select: none;
+	left: 152px;
+	top: 119px;
+	z-index: 1;
 }
 
-.div--stats:hover .inner {
-	transform: rotate(0);
+.habilidades {
+	padding: 20px 0 0 220px;
 }
 
-.div--stats .inner {
-	transition: .3s;
-	transform: rotateY(-30deg);
+.graphics {
+	padding: 5px 0 0 190px;
 }
 
-legend {
-	color: dimgrey;
-	font-size: 1.5rem;
-	margin-bottom: 20px;
-}
-
-td {
-	padding: 0.75rem;
-	vertical-align: top;
+h1 {
+	font-size: 36px;
+	font-weight: 500;
+	color: #193c6c;
+	margin: 0px 0 20px 0;
 }

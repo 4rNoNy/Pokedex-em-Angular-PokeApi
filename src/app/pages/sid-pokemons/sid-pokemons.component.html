@@ -1,0 +1,14 @@
+<h1>Pokemons</h1>
+<section class="form shadow-lg p-3 mb-5 bg-white rounded">
+  <poke-search (search)="onSearch($event)"></poke-search>
+</section>
+<section>
+  <div class="responsive-grid" style="border-radius: 25px !important;" *ngIf="pokemonsPaginated"
+    [@listAnimation]="pokemonsPaginated.length">
+    <pokecards *ngFor="let pokemon of pokemonsPaginated" [pokemon]="pokemon" (click)="goToPokemonDetails(pokemon)">
+    </pokecards>
+  </div>
+  <mat-paginator *ngIf="length$ | async as length" [length]="length" [pageSize]="limit" [pageSizeOptions]="limitOptions"
+    (page)="changePage($event)">
+  </mat-paginator>
+</section>

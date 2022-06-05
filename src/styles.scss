@@ -5,30 +5,30 @@
 @import './assets/css/variables.scss';
 
 @import '~bootstrap/scss/bootstrap';
-
-
-
-
-
-
-/* Imports de váriaveis de CSS */
-
-/* CSS adicionado pelo Angular Material */
-html,
-body {
-  text-rendering: optimizeLegibility;
-  touch-action: manipulation;
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 * {
-  font-family: 'Lato', sans-serif
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
+
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  background: #f4f7fa;
+
+}
+
+
 
 /* CSS especifico de classes */
 header.page-title {
-  background-color: var(--branco);
+  background-color: #f4f7fa;
   display: flex;
   height: 200px;
   justify-content: center;
@@ -117,5 +117,6 @@ button.back-button {
     filter: brightness(1);
   }
 }
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

@@ -1,8 +1,8 @@
-<article class="pokecard" [ngStyle]="{'background': generateCardBackground(pokemon.types)}">
+<article class="pokecard" [ngStyle]="{'color': generateCardBackground(pokemon.types)}">
   <p class="pokecard__pokemon">
     <span class="pokecard__pokemon__number">#{{ number }}</span>
   </p>
-  <div class="col-xs-5 col-3" style="padding: 0; left: 83%;top: 3%;position: absolute;">
+  <div class="col-xs-5 col-3" style="padding: 0; left: 86%;top: 3%;position: absolute;">
     <div *ngFor="let type of pokemon.types">
       <div [ngSwitch]="type.type.name">
         <div class="icon bug" *ngSwitchCase="'bug'"><img alt="" src="assets/type-icons/png/bug.png"></div>
@@ -30,7 +30,7 @@
   </div>
 
   <div class="pokecard__images">
-    <img class="pokecard__images__pokeball" src="../../../assets/images/pokeball_1.png" alt="pokeball" />
+    <!-- <img class="pokecard__images__pokeball" src="../../../assets/images/pokeball_1.png" alt="pokeball" /> -->
     <img class="pokecard__images__sprite" [src]="pokemon.sprites['official'] || pokemon.sprites['front']"
       [alt]="pokemon.name" />
   </div>

@@ -1,12 +1,8 @@
 <form (submit)="doSearch()" class="search">
   <mat-form-field class="search--field">
-    <mat-label>Procure por nome...</mat-label>
-    <input #input type="text" name="termo_busca" autocomplete="off" matInput [errorStateMatcher]="matcher" [formControl]="searchTerm"
-      placeholder="Ex: Pikachu" />
-    <mat-error *ngIf="searchTerm.hasError('required')">
-      Nome obrigatório para busca!
-    </mat-error>
+    <mat-label>Procure por nome ou ID...</mat-label>
+    <input #input type="text" name="termo_busca" autocomplete="off" matInput placeholder="Ex: Pikachu ou 25" />
   </mat-form-field>
-  <button type="submit" mat-raised-button class="search--button">Procurar<img src="assets/search.svg"
-      alt="Buscar Pokemon"></button>
+  <button type="submit" mat-raised-button class="search--button"><img src="assets/search.svg" alt="Buscar Pokemon">
+    Procurar</button>
 </form>

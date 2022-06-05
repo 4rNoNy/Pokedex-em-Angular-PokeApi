@@ -11,7 +11,8 @@
 }
 
 section.game {
-  background-color: var(--branco);
+  background-color: #f4f7fa;
+  ;
   margin: 0 auto;
   border-radius: var(--border-radius);
   position: relative;
@@ -20,7 +21,8 @@ section.game {
   width: 46.8vw;
 
   .game--generations {
-    background-color: var(--branco);
+    background-color: #f4f7fa;
+    ;
     color: var(---primary-bg);
     border-radius: 25px !important;
     border: 1px solid #0000005e;
@@ -84,4 +86,11 @@ section.game {
       }
     }
   }
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 500;
+  color: #193c6c;
+  margin: 0px 0 20px 0;
 }

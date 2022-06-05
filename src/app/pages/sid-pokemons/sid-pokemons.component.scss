@@ -1,0 +1,28 @@
+section {
+  background: #f4f7fa;
+  padding: 20px;
+
+  &.form {
+    margin: 0 auto;
+    position: relative;
+    width: 55vw;
+    background-color: var(--branco);
+    border-radius: 25px !important;
+    border: 1px solid #d9d5d5a3;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      transition: 0.3s ease-in-out;
+      box-shadow: 0rem 2rem 2rem rgba(0, 0, 0, 18%) !important;
+
+    }
+
+  }
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 500;
+  color: #193c6c;
+  margin: 0px 0 20px 0;
+}

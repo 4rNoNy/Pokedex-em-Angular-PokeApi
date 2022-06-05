@@ -1,90 +1,56 @@
-<!-- Botão para voltar -->
-<button mat-fab color="basic" class="back-button" style="position: fixed;" aria-label="voltar"
-  (click)="_location.back()">
-  <mat-icon>arrow_back</mat-icon>
-</button>
+<h1>Detalhes</h1>
 <div class="container-fluid" style="padding-left: 2rem;
-padding-right: 2rem;">
+padding-right: 2rem; border-radius: 10px;" [ngStyle]="{background: colorType(pokemon?.types[0])+'82'}">
 
-  <div *ngIf=" pokemon" class="col-12 fadeIn MainDiv">
-    <br>
-    <h1 class="text-center text-uppercase Section-Heading" style="text-shadow: 2px 2px 4px rgba(150, 150, 150, 1);">
-      {{pokemon?.name}} </h1>
+  <div class="content" *ngIf=" pokemon">
+    <div>
 
-    <div class="row justify-content-center shadow-lg  p-3 mb-5 rounded"
-      style="border-radius: 25px !important; position: relative; padding-bottom: 3rem;"
-      [ngStyle]="{background: colorType(pokemon?.types[0])+'82'}">
+      <div class="title">
+        <div class="subgrid">
+          <div class="number">#{{number}}</div>
+          <div class="name">{{pokemon?.name}}</div>
+          <div class="details">
+            <div class="row">
+              <span>Altura</span>
+              <span>{{(pokemon.height * 10) / 100}}m</span>
+            </div>
+            <div class="row">
+              <span>Peso </span>
+              <span>{{(pokemon.weight * 100) / 1000}}kg</span>
+            </div>
+            <div style="display: flex; padding: 5px 0 0 0px;">
+              <app-type-badge *ngFor="let type of pokemon.types" [id]="type"></app-type-badge>
+            </div>
+          </div>
+        </div>
 
-      <div class="col-lg-3 col-md-2 d-flex flex-wrap justify-content-center pokemon--detalhes">
-        <div class="inner">
-
-          <table class="shadow p-3 mb-5 bg-white rounded table table-borderless" style="
-            border-radius: 25px !important;height: 100%;">
-            <tr>
-              <td class="text-right font-weight-bold">ID</td>
-              <td>#{{number}}</td>
-            </tr>
-            <tr>
-              <td class="text-right font-weight-bold">Altura</td>
-              <td style="white-space: nowrap;">{{(pokemon.height * 10) / 100}}m</td>
-            </tr>
-            <tr>
-              <td class="text-right font-weight-bold">Peso</td>
-              <td style="white-space: nowrap;">{{(pokemon.weight * 100) / 1000}}kg</td>
-            </tr>
-            <tr>
-              <td class="text-right font-weight-bold">Habilidades</td>
-              <td style="height: 40px;">
-                <span *ngFor="let abilidades of pokemons?.abilities"
-                  [ngStyle]="{background: colorType(pokemon?.types[0])}" style="border-radius: 2px;
-                padding: 2px 3px;
-                margin-right: 6px;line-height: normal;">
-                  <span class="text-uppercase"
-                    style="color: white; border-radius: 2px; white-space: nowrap; display: unset; margin-top: 0px;">{{
-                    abilidades.ability?.name}}</span>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-right font-weight-bold" style="vertical-align: middle;">Tipo</td>
-              <td style="vertical-align: middle;">
-                <div data-toggle="modal" data-target="#typesModal" class="row"
-                  style="flex-wrap: nowrap; padding: 0;                ">
-                  <div class="text-capitalize" Style="padding: 0 20px 0 0; display: flex;">
-                    <app-type-badge *ngFor="let type of pokemon.types" [id]="type"></app-type-badge>
-                  </div>
-                </div>
-              </td>
-            </tr>
-
-
-          </table>
-
+        <div class="picture">
+          <img [src]="pokemon.sprites.official" [alt]="pokemon.name">
         </div>
       </div>
 
-      <div class="col-lg-5 d-flex flex-wrap align-items-center">
-        <div class="image-container" style="position: relative; padding-bottom: calc(85% + 10px);height: 0; overflow: hidden;
-        margin: auto;">
-          <img class="img img-fluid mx-auto my-auto d-block fadeInOut fadeImg"
-            style="z-index: 100!important; max-width: 92%; height: auto; padding-top: 10px;"
-            [src]="pokemon.sprites.official" [alt]="pokemon.name" />
-        </div>
-      </div>
-
-      <div class="div--stats col-lg-3 col-md-2 my-auto mx-auto d-flex flex-wrap justify-content-center">
-        <div class="inner">
-
-          <table style="border-radius: 25px !important; " class="shadow p-3 bg-white rounded table table-borderless">
-            <legend class="rounded-pill " style="color: black;text-align: center; margin-top: 5px;
-            margin-bottom: 5px;">Status
-              Base</legend>
+      <div class="stats">
+        <div>
+          <div class="title">Status</div>
+          <div class="graphics">
             <app-poke-status *ngFor=" let status of pokemon.stats" [status]="status">
             </app-poke-status>
-          </table>
-
+          </div>
+        </div>
+        <div style="padding-top: 10px;">
+          <div class="title">Habilidades</div>
+          <div class="habilidades">
+            <span *ngFor="let abilidades of pokemons?.abilities" [ngStyle]="{background: colorType(pokemon?.types[0])}"
+              style="border-radius: 2px;
+          padding: 2px 3px;
+          margin-right: 6px;line-height: normal;">
+              <span class="text-uppercase"
+                style="color: white; border-radius: 2px; white-space: nowrap; display: unset; margin-top: 0px;">{{
+                abilidades.ability?.name}}</span>
+            </span>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
-</div>

@@ -1,18 +1,18 @@
 import { SharedModule } from './../../shared/shared.module';
-import { HomeComponent } from './home.component';
+import { SidPokemonsComponent } from './sid-pokemons.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
+import { pokemonsRoutingModule } from './sidPokemons-routing.module';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    SidPokemonsComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
-    HomeRoutingModule
+    pokemonsRoutingModule
   ]
 })
-export class HomePageModule { }
+export class SidPokemonsModule { }
